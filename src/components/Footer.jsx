@@ -74,14 +74,14 @@ const Footer = () => {
           </div>
           <div className = "flex justify-around space-x-32">
           <ul className="font-bold flex flex-col space-y-4 items-center md:items-start" >
-              <li className="hover:text-red-300">Home</li>
-              <Link to = "/About">About</Link>
-              <Link to = "/Message">Message</Link>
-              <li className="hover:text-red-300">Terms of Services</li>
+              <Link to = "/">Home</Link>
+              <Link to = "/About"  className="hover:text-red-500">About</Link>
+              <Link to = "/Message" className="hover:text-red-500">Message Us</Link>
+              <Link to = "/contact"className="hover:text-red-500" >Contact Us</Link>
             </ul>
           <ul className =  " font-bold flex flex-col space-y-4 md:items-start ">
-              <Link to = "/contact" >Contact</Link>
-              <li className="hover:text-red-300">Privacy Policy</li>
+               <Link to = "/Policy" className = "hover:text-red-500">Privacy Policy</Link> 
+              <Link to = "/Terms" className = "hover:text-red-500">Terms of Services</Link>
             </ul>
           </div>
           <div className = " hidden lg:block mr-11">Copyright &copy; 2024, Allrights Reserved</div>

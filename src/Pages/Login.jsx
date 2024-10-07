@@ -49,8 +49,8 @@ const Login = () => {
              className = "border p-3 w-[300px] rounded-sm"
             />
         </div>
-        <input type = "submit" value = "Login"  className = "bg-gray-400 mt-6 mb-4 px-6 py-2 w-[300px] rounded-lg  font-semibold" />
-        <p className = "text-lg">Not yet registered?<Link to = "/Register" className = "text-red-400 px-2 cursor-pointer" >Sign up here</Link></p>
+        <input type = "submit" value = "Login"  className = "bg-gray-500 hover:bg-gray-400 mt-6 mb-4 px-6 py-2 w-[300px] rounded-lg  font-semibold" />
+        <p className = "text-lg">Not yet registered?<Link to = "/Register" className = "text-red-500 hover:text-red-700 px-2 cursor-pointer" >Sign up here</Link></p>
     </form>
    </>
   )

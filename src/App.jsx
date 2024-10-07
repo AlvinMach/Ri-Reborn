@@ -14,6 +14,8 @@ import PageNotfound from "./Pages/PageNotfound"
 import Mainlayouts from "./layouts/Mainlayouts"
 import About from "./Pages/About"
 import Contact from "./Pages/Contact"
+import PrivacyPolicy from './Pages/PrivacyPolicy';
+import Terms from './Pages/Terms';
 
 
 const App = () => {
@@ -41,6 +43,8 @@ const App = () => {
       <Route path = "/Register" element = {<Register/>} />
       <Route path = "/About" element = {<About/>}/>
       <Route path = "/contact" element = {<Contact/>}/>
+      <Route path = "/Policy" element = {<PrivacyPolicy/>}/>
+      <Route path = "/Terms" element = {<Terms/>}/>
       <Route path = "*" element = {<PageNotfound/>}/>
     </Routes>
    

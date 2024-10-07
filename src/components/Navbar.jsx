@@ -38,11 +38,11 @@ const Navbar = () => {
   
   return (
     <>
-       <nav className = " mx-auto container px-[100px] py-6 bg-white sticky top-0 z-10" >
+       <nav className = " mx-auto container  px-4 md:px-6 lg:px-[100px]  py-4 bg-white sticky top-0 z-10" >
         <div className = " max-w-[1640px] flex justify-between items-center">
           <div className = "flex flex-row space-x-4 items-center">
-             <img src = "/Ri Logo.jpeg"  alt = "Ri Reborn" width = {85} className = "rounded-full" />
-             <h1 className = "font-bold">Ri REBORN</h1>
+             <img src = "/Ri Logo.jpeg"  alt = "Ri Reborn" width = {85} className = "rounded-full mr-6" />
+             <h1 className = "font-bold max-w-lg">Ri REBORN</h1>
           </div>
           <ul class = "hidden md:flex px-11 md:space-x-11 md:items-center md:justify-center mb-4 mt-3  text-center">
             <Link className = "text-lg hover:text-red-600 font-semibold" to = "/">Home</Link>
