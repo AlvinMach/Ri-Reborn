@@ -1,14 +1,8 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import { useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../utils/AuthContextProvider";
-import { FaFacebook } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaSquareInstagram } from "react-icons/fa6";
-import { FaPinterest } from "react-icons/fa";
-import { FaWhatsappSquare } from "react-icons/fa"
-import {Link} from "react-router-dom"
-
+import { FaFacebook, FaWhatsappSquare, FaPinterest } from "react-icons/fa";
+import { FaXTwitter, FaSquareInstagram } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { handlelogout } = useContext(AuthContext);
@@ -37,7 +31,6 @@ const Footer = () => {
       const data = await res.json();
       setMines(data);
     } else {
-      
       const res = await fetch(
         `http://localhost:8000/mines?title_like=${searchQuery}`
       );
@@ -45,46 +38,52 @@ const Footer = () => {
       setMines(data);
     }
   };
+
   return (
     <>
-      <footer className=" container mx-auto w-full bg-gray-200 duration-200 py-10 px-6 text-center mt-11">
-        <div className="flex md:flex-row  flex-col-reverse mt-2 mb-10 space-y-32 md:space-y-0 justify-between items-center">
-          <div classsName="flex flex-col-reverse md:flex-row space-y-8">
-          <div className = ""> 
-               <h1 className="font-bold mb-11 text-3xl mt-8">Ri Reborn</h1>
-               <h2 className = "border-b-2 border-black text-red-400 text-2xl mb-6">Follow Us</h2>
-               <ul className="flex items-start md:flex md:justify-center text-center space-x-4 ">
+      <footer className="container mx-auto w-full bg-gray-200 py-10 px-6 mt-11">
+        <div className="flex flex-col md:flex-row justify-between items-center space-y-10 md:space-y-0">
+          <div className="text-center md:text-left">
+            <h1 className="font-bold mb-4 text-3xl">Ri Reborn</h1>
+            <h2 className="border-b-2 border-black text-red-400 text-2xl mb-4">
+              Follow Us
+            </h2>
+            <ul className="flex justify-center md:justify-start space-x-4">
               <a href="">
-                <FaWhatsappSquare  size = {30}  className = "hover:scale-105 duration-200" />
-              </a>
-              <a href="">
-                <FaXTwitter size = {30} className = "hover:scale-105 duration-200"  />
+                <FaWhatsappSquare size={30} className="hover:scale-105 duration-200" />
               </a>
               <a href="">
-                <FaFacebook size = {30}   className = "hover:scale-105 duration-200" />
-              </a>
-              <a href="https://www.instagram.com/teslamotors/" target = "blank">
-                < FaSquareInstagram size = {30}   className = "hover:scale-105" />
+                <FaXTwitter size={30} className="hover:scale-105 duration-200" />
               </a>
               <a href="">
-                < FaPinterest size = {30}  className = "hover:scale-105 duration-200" />
+                <FaFacebook size={30} className="hover:scale-105 duration-200" />
               </a>
-            </ul>
-            </div>
-          </div>
-          <div className = "flex justify-around space-x-32">
-          <ul className="font-bold flex flex-col space-y-4 items-center md:items-start" >
-              <Link to = "/">Home</Link>
-              <Link to = "/About"  className="hover:text-red-500">About</Link>
-              <Link to = "/Message" className="hover:text-red-500">Message Us</Link>
-              <Link to = "/contact"className="hover:text-red-500" >Contact Us</Link>
-            </ul>
-          <ul className =  " font-bold flex flex-col space-y-4 md:items-start ">
-               <Link to = "/Policy" className = "hover:text-red-500">Privacy Policy</Link> 
-              <Link to = "/Terms" className = "hover:text-red-500">Terms of Services</Link>
+              <a href="https://www.instagram.com/teslamotors/" target="blank">
+                <FaSquareInstagram size={30} className="hover:scale-105 duration-200" />
+              </a>
+              <a href="">
+                <FaPinterest size={30} className="hover:scale-105 duration-200" />
+              </a>
             </ul>
           </div>
-          <div className = " hidden lg:block mr-11">Copyright &copy; 2024, Allrights Reserved</div>
+
+          <div className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-24">
+            <ul className="font-bold flex flex-col space-y-4 items-center md:items-start">
+              <Link to="/" className="hover:text-red-500">Home</Link>
+              <Link to="/About" className="hover:text-red-500">About</Link>
+              <Link to="/Message" className="hover:text-red-500">Message Us</Link>
+              <Link to="/Contact" className="hover:text-red-500">Contact Us</Link>
+            </ul>
+
+            <ul className="font-bold flex flex-col space-y-4 items-center md:items-start">
+              <Link to="/Policy" className="hover:text-red-500">Privacy Policy</Link>
+              <Link to="/Terms" className="hover:text-red-500">Terms of Services</Link>
+            </ul>
+          </div>
+
+          <div className="text-center md:text-right mt-6 md:mt-0">
+            <p className="text-sm">&copy; 2024, All Rights Reserved</p>
+          </div>
         </div>
       </footer>
     </>

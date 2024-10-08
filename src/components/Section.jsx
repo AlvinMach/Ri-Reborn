@@ -1,137 +1,126 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TiDelete } from "react-icons/ti";
-import { useContext, useEffect ,useState} from "react";
-import {db} from "../config/databases"
+import { db } from "../config/databases";
 import { AuthContext } from "../utils/AuthContextProvider";
-import { teams,account,storage ,client} from '../config/config'
-import {toast} from "react-toastify"
-
-
+import { teams, account, storage, client } from '../config/config';
+import { toast } from "react-toastify";
 
 const Section = () => {
-  const { texts, getTexts,setTexts } = useContext(AuthContext);
-  const [isadmin,setIsadmin] = useState(null)
-  const {upload,setImagelist,imagelist,handleImageChange} = useContext(AuthContext)
+  const { texts, getTexts, setTexts } = useContext(AuthContext);
+  const [isadmin, setIsadmin] = useState(null);
+  const { upload, setImagelist, imagelist, handleImageChange } = useContext(AuthContext);
 
-
-  useEffect(()=>{
-    const isadmin = async () =>{
-      try{
+  useEffect(() => {
+    const checkAdminStatus = async () => {
+      try {
         const user = await account.get();
-        const userid = user.$id
+        const userid = user.$id;
 
-        const memberships = await teams.listMemberships('66f81b3b002cda189895')
-        const isadmin = memberships.memberships.some(
-          (member) => member.userId === userid && member.roles.includes('admin'));
-
-          setIsadmin(isadmin)
-      }catch (error){
-        console.error(error)
+        const memberships = await teams.listMemberships('66f81b3b002cda189895');
+        const adminStatus = memberships.memberships.some(
+          (member) => member.userId === userid && member.roles.includes('admin')
+        );
+        setIsadmin(adminStatus);
+      } catch (error) {
+        console.error(error);
       }
-    }
+    };
 
-    isadmin();
-  },[]);
+    checkAdminStatus();
+  }, []);
 
   useEffect(() => {
     getTexts();
 
-    
-  const unsubscribe = client.subscribe(
-    `databases.${import.meta.env.VITE_DATABASE_ID}.collections.${
-      import.meta.env.VITE_COLLECTION_ID
-    }.documents`,
-    (response) => {
-      if (
-        response.events.includes(
-          "databases.*.collections.*.documents.*.create"
-        )
-      ) {
-        setTexts((prevState) => [response.payload, ...prevState]);
-       
-        
+    const unsubscribe = client.subscribe(
+      `databases.${import.meta.env.VITE_DATABASE_ID}.collections.${
+        import.meta.env.VITE_COLLECTION_ID
+      }.documents`,
+      (response) => {
+        if (
+          response.events.includes(
+            "databases.*.collections.*.documents.*.create"
+          )
+        ) {
+          setTexts((prevState) => [response.payload, ...prevState]);
+        }
+
+        if (
+          response.events.includes(
+            "databases.*.collections.*.documents.*.delete"
+          )
+        ) {
+          setTexts((prevState) =>
+            prevState.filter((i) => i.$id !== response.payload.$id)
+          );
+          toast.success("A Product was Removed");
+        }
       }
+    );
 
-      if (
-        response.events.includes(
-          "databases.*.collections.*.documents.*.delete"
-        )
-      ) {
-        setTexts((prevState) =>
-          prevState.filter((i) => i.$id !== response.payload.$id)
-        );
-        toast.success("A Product was Removed ")
-      }
-
-    }
-  );
-
-  return () =>{
-    unsubscribe();
-  };
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
-  const Removeproduct = async (item_id) =>{
-    const confirm = window.confirm("Are You Sure You Want to Remove the Product")
-    if(!confirm){
+  const Removeproduct = async (item_id) => {
+    const confirm = window.confirm("Are You Sure You Want to Remove the Product");
+    if (!confirm) {
       return;
-
     }
-    const response = await db.texts.delete(item_id)
-    //setTexts((prevState)=>prevState.filter((i)=>i.$id !== item_id))
-    //toast.success("delete success")
+    await db.texts.delete(item_id);
+  };
 
-
-
-  }
-
-  const deleteImage = async (e,image_id) =>{
+  const deleteImage = async (e, image_id) => {
     e.preventDefault();
-    const confirm = window.confirm("Are You Sure You Want to Remove the Product")
-    if(!confirm){
+    const confirm = window.confirm("Are You Sure You Want to Remove the Product");
+    if (!confirm) {
       return;
-
     }
 
-    await storage.deleteFile('66f5ac5b003a8ec046e8',image_id);
+    await storage.deleteFile('66f5ac5b003a8ec046e8', image_id);
     setImagelist((prevState) => prevState.filter((image) => image.$id !== image_id));
-    toast.success("delete success")
-  }
-
-
-
-
-
-
+    toast.success("Image deleted successfully");
+  };
 
   return (
     <>
-      <h1 className = "text-center text-3xl font-extrabold">Products</h1>
-      <div className = "max-w-[1640px] lg:grid lg:grid-cols-3 flex flex-col space-y-4 gap-4 mx-auto container px-8 py-8 m-8 ">
+      <h1 className="text-center text-3xl font-extrabold">Products</h1>
+      <div className="max-w-[1640px] mx-auto container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 py-8">
         {imagelist &&
-        imagelist.map((image) => (
-          <div key={image.$id} className = "px-11 relative">
-            {isadmin ?( <TiDelete  size = {20} className = " text-red-800 cursor-pointer absolute top-0 right-0 " onClick = {(e)=>deleteImage(e,image.$id)}/>):("")}
-            
-            <img className = " hover:scale-105 duration-300 h-[380px] rounded-lg  "
-              src={storage.getFilePreview("66f5ac5b003a8ec046e8", image.$id)}
-              alt="Preview"
-             
-            />
-         
-          </div>
-          
-        ))}
-       
+          imagelist.map((image) => (
+            <div key={image.$id} className="relative">
+              {isadmin && (
+                <TiDelete
+                  size={20}
+                  className="text-red-800 cursor-pointer absolute top-2 right-2"
+                  onClick={(e) => deleteImage(e, image.$id)}
+                />
+              )}
+              <img
+                className="hover:scale-105 duration-300 h-[380px] w-full object-cover rounded-lg"
+                src={storage.getFilePreview("66f5ac5b003a8ec046e8", image.$id)}
+                alt="Preview"
+              />
+            </div>
+          ))}
+
         {texts && texts.length > 0 ? (
           texts.map((item) => (
-            <div key={item.$id} className = "bg-white  shadow-lg m-6 hover:scale-105 duration-300 text-center max-h-[800px] max-w-[800px] overflow-hidden relative ">
-              <div className = "md:flex md:space-x-16 px-8 py-8 flex space-y-5 flex-col items-center text-center  ">
-                <h1 className = "text-black font-semibold mt-6  ">{item.title}</h1>
-                <h2 className = "text-sm max-w-sm  mx-auto px-4">{item.body}</h2>
-                <p className = " text-red-600">{item.Location}</p>
-              </div>
-              {isadmin ? ( <TiDelete  size = {20} className = " text-red-500 cursor-pointer absolute top-0 right-6 " onClick = {()=>Removeproduct(item.$id)}/>):("")}
+            <div
+              key={item.$id}
+              className="bg-white shadow-lg hover:scale-105 duration-300 text-center max-h-[800px] max-w-full rounded-lg overflow-hidden relative p-6"
+            >
+              <h1 className="text-black font-semibold text-xl mb-4">{item.title}</h1>
+              <p className="text-sm mb-4">{item.body}</p>
+              <p className="text-red-600">{item.Location}</p>
+              {isadmin && (
+                <TiDelete
+                  size={20}
+                  className="text-red-500 cursor-pointer absolute top-2 right-2"
+                  onClick={() => Removeproduct(item.$id)}
+                />
+              )}
             </div>
           ))
         ) : (
