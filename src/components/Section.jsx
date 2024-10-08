@@ -124,7 +124,7 @@ const Section = () => {
             </div>
           ))
         ) : (
-          <p>No texts available</p>
+          <p className="text-center col-span-3 text-gray-500">No Products available at the moment</p>
         )}
       </div>
     </>
