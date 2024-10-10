@@ -41,7 +41,7 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="container mx-auto w-full bg-gray-200 py-10 px-6 mt-11">
+      <footer className="max-w-[1640px] container mx-auto w-full bg-gray-200 py-10 px-6 mt-11">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-10 md:space-y-0">
           <div className="text-center md:text-left">
             <h1 className="font-bold mb-4 text-3xl">Ri Reborn</h1>

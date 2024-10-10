@@ -34,10 +34,9 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="mx-auto container px-4 md:px-6 lg:px-[100px] py-4 bg-white sticky top-0 z-10">
+      <nav className=" max-w-[1640px] mx-auto container px-4 md:px-6 lg:px-[100px] py-4 bg-white sticky top-0 z-10">
         <div className="max-w-[1640px] flex justify-between items-center">
           <div className="flex flex-row items-center">
-            <img src="/Ri Logo.jpeg" alt="" width={42} className="rounded-full mr-4" />
             <h1 className="font-bold max-w-lg">Ri REBORN</h1>
           </div>
           <ul className="hidden md:flex px-11 md:space-x-11 md:items-center md:justify-center mb-4 mt-3 text-center">
@@ -60,7 +59,7 @@ const Navbar = () => {
               </button>
             ) : (
               <Link to="/login">
-                <button className="hidden md:block bg-gray-600 rounded-lg px-10 py-2 font-semibold text-black text-lg">
+                <button className="hidden md:block  hover:bg-blue-200 text-black border border-blue-400 rounded-lg px-10 py-2 font-semibold  text-lg">
                   Login
                 </button>
               </Link>

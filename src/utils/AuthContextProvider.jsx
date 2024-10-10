@@ -1,13 +1,11 @@
 import React from "react";
 import { useState, createContext, useEffect } from "react";
-import { account,storage} from "../config/config";
+import { account, storage } from "../config/config";
 import { useNavigate } from "react-router-dom";
 import { ID } from "appwrite";
 import { db } from "../config/databases";
-import DotLoader from "react-spinners/DotLoader"
-import {toast} from 'react-toastify'
-
-
+import DotLoader from "react-spinners/DotLoader";
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext(null);
 
@@ -21,8 +19,8 @@ const AuthContextProvider = (props) => {
   const [title, setTitle] = useState("");
   const [location, setLocation] = useState("");
   const [image, setImage] = useState(null);
-  const [messages,setMessages] = useState("")
-
+  const [messages, setMessages] = useState("");
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     useronload();
@@ -52,7 +50,7 @@ const AuthContextProvider = (props) => {
       toast.success("Login Sucessfully");
     } catch (error) {
       console.error(error);
-      alert('invalid credentials')
+      alert("invalid credentials");
     }
   };
 
@@ -87,7 +85,7 @@ const AuthContextProvider = (props) => {
         ID.unique(),
         credentials.email,
         credentials.password1,
-        credentials.name,
+        credentials.name
       );
 
       await account.createEmailPasswordSession(
@@ -96,31 +94,29 @@ const AuthContextProvider = (props) => {
       );
       const accountDetails = await account.get();
       setUser(accountDetails);
-        navigate("/");
-        toast.success("Login Sucessfully");
+      navigate("/");
+      toast.success("Login Sucessfully");
     } catch (error) {
       console.error("Registration error:", error.message);
     }
   };
 
-
   let payload = {
     body: newbody,
     title: title,
     Location: location,
-  }
+  };
 
   const createTexts = async (e) => {
     e.preventDefault();
     const response = await db.texts.create(payload);
     //setTexts((prevState) => [response, ...prevState]);
     navigate("/");
-    toast.success("A Product Was Added")
+    toast.success("A Product Was Added");
   };
 
   useEffect(() => {
     getTexts();
-   
   }, []);
 
   const getTexts = async () => {
@@ -132,24 +128,18 @@ const AuthContextProvider = (props) => {
     }
   };
 
-
-
-
-
-  
   const handleImageChange = (e) => {
-    setImage(e.target.files[0]); 
+    setImage(e.target.files[0]);
   };
 
-  const getImage = async () =>{
-    const images = await storage.listFiles('66f5ac5b003a8ec046e8');
-    setImagelist(images.files)
-  }
+  const getImage = async () => {
+    const images = await storage.listFiles("66f5ac5b003a8ec046e8");
+    setImagelist(images.files);
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     getImage();
-  },[])
-
+  }, []);
 
   const upload = async (e) => {
     e.preventDefault();
@@ -178,9 +168,18 @@ const AuthContextProvider = (props) => {
     }
   };
 
-  
+  const addToCart = (itemId) => {
+    if(!cartItems[itemId]){
+      setCartItems((prev) => ({...prev ,[itemId]:1}));
+    }else{
+      setCartItems((prev) => ({...prev ,[itemId]:prev[itemId]+1}));
+    }
+   
+  };
 
-
+  const clearCart = () => {
+    setCart([]);
+  };
 
   const contextdata = {
     user,
@@ -198,27 +197,36 @@ const AuthContextProvider = (props) => {
     handleImageChange,
     setImagelist,
     imagelist,
-   
+    addToCart,
+    clearCart,
+    setCartItems,
+    cartItems,
   };
 
-  const override = {
-    display:'flex',
-    justifyContent:'center',
-    alignItems:'center',
-    height:'60vh',
-    margin:'100px auto',
-    justifyitems:'center ',
+  useEffect(()=>{
+    console.log(cartItems);
+  },[cartItems])
 
-    }
+  const override = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+    width: "100vw",
+  };
 
   return (
     <AuthContext.Provider value={contextdata}>
-      {loading ? <DotLoader 
-        color={'#808080'}
-        loading={loading}
-        cssOverride = {override}
-        size={80}
-      /> : props.children}
+      {loading ? (
+        <DotLoader
+          color={"#808080"}
+          loading={loading}
+          cssOverride={override}
+          size={40}
+        />
+      ) : (
+        props.children
+      )}
     </AuthContext.Provider>
   );
 };

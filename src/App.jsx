@@ -18,6 +18,9 @@ import PrivacyPolicy from './Pages/PrivacyPolicy';
 import Terms from './Pages/Terms';
 
 
+
+
+
 const App = () => {
 
  
@@ -45,6 +48,7 @@ const App = () => {
       <Route path = "/contact" element = {<Contact/>}/>
       <Route path = "/Policy" element = {<PrivacyPolicy/>}/>
       <Route path = "/Terms" element = {<Terms/>}/>
+      <Route path = "/item/:itemId" element = {<SingleProduct/>} />
       <Route path = "*" element = {<PageNotfound/>}/>
     </Routes>
    
