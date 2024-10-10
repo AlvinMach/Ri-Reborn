@@ -16,19 +16,20 @@ const Section = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchitems = async () => {
+    const fetchItems = async () => {
       try {
-        const res = await fetch("http://localhost:8000/products");
+        const res = await fetch("/products.json"); 
         const data = await res.json();
-        setProducts(data);
+        console.log(data); 
+        setProducts(data.products);
       } catch (error) {
         console.log(error);
-      }finally{
-        setLoading(false)
+      } finally {
+        setLoading(false);
       }
     };
-
-    fetchitems();
+    
+    fetchItems();
   }, []);
 
   useEffect(() => {
@@ -144,14 +145,18 @@ const Section = () => {
        )}
      </div>
 
-     <h1 className = " text-slate-400 text-5xl ml-6 font-semibold px-11 space-x-8  font-custom mt-8">Protective Wear Clothing</h1>
-     <div className="max-w-[1640px] mx-auto container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 py-8">
-     {products.map((item)=>(
-       <div>
-         <Products item = {item}/>
-       </div>
-     ))}
-     </div>
+     <h1 className="text-slate-400 text-5xl ml-6 font-semibold px-11 space-x-8 font-custom mt-8">
+  Protective Wear Clothing
+</h1>
+
+<div className="max-w-[1640px] mx-auto container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 py-8">
+  {products.map((item) => (
+    <div key={item.id}> {/* Add a key for each item */}
+      <Products item={item} />
+    </div>
+  ))}
+</div>
+
 
      <h1 className="text-5xl ml-6 text-slate-400 font-semibold px-11  space-x-8 font-custom mt-8 ">Gemstones</h1>
      <div className="max-w-[1640px] mx-auto container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 py-8">
