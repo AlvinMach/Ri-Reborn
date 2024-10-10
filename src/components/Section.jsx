@@ -113,10 +113,10 @@ const Section = () => {
 
   return (
     <>
-    <section className=" max-w-[1640px] mx-auto container px-4 md:px-6 lg:px-[100px] py-4" >
-    <h1 className=" sm:hidden text-center text-5xl  mt-8 font-extrabold">Available Products</h1>
+    <section className = "bg-slate-200  max-w-[1640px] mx-auto container px-4 md:px-6 lg:px-[100px] py-4" >
+    
      
-     <h1 className = "text-5xl  font-semibold  px-11 text-slate-400 space-x-8 font-custom ml-6 mt-11">Mines</h1>
+     <h1 className = "text-5xl text-center font-semibold font-montserrat px-11 text-slate-700 space-x-8 font-custom ml-6 mt-11">Mines</h1>
      <div className="max-w-[1640px] mx-auto container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 py-8">
        {texts && texts.length > 0 ? (
          texts.map((item) => (
@@ -145,20 +145,20 @@ const Section = () => {
        )}
      </div>
 
-     <h1 className="text-slate-400 text-5xl ml-6 font-semibold px-11 space-x-8 font-custom mt-8">
+     <h1 className="text-slate-700 text-center text-5xl ml-6 font-montserrat font-semibold px-11 space-x-8 font-custom mt-8">
   Protective Wear Clothing
 </h1>
 
 <div className="max-w-[1640px] mx-auto container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 py-8">
   {products.map((item) => (
-    <div key={item.id}> {/* Add a key for each item */}
+    <div key={item.id}>
       <Products item={item} />
     </div>
   ))}
 </div>
 
 
-     <h1 className="text-5xl ml-6 text-slate-400 font-semibold px-11  space-x-8 font-custom mt-8 ">Gemstones</h1>
+     <h1 className="text-5xl ml-6 text-center font-montserrat text-slate-700 font-semibold px-11  space-x-8 font-custom mt-8 ">Gemstones</h1>
      <div className="max-w-[1640px] mx-auto container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 py-8">
        {imagelist &&
          imagelist.map((image) => (
@@ -171,7 +171,7 @@ const Section = () => {
                />
              )}
              <img
-               className="hover:scale-105 duration-300 h-[380px] w-full object-cover rounded-lg"
+               className="hover:scale-105 duration-300 h-[500px] w-full object-cover rounded-lg"
                src={storage.getFilePreview("66f5ac5b003a8ec046e8", image.$id)}
                alt="Preview"
              />

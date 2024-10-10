@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from "../utils/AuthContextProvider";
 import { teams, account } from '../config/config';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { FaMessage } from "react-icons/fa6";
+import { PiQuestionMarkFill } from "react-icons/pi";
+import { IoMdHome } from "react-icons/io"
+
 
 const Navbar = () => {
   const { user, handlelogout } = useContext(AuthContext);
@@ -71,12 +75,13 @@ const Navbar = () => {
             <div className={isnav ? "bg-white shadow-md fixed h-screen w-[350px] top-0 z-10 left-0" : "bg-white shadow-md fixed h-screen w-[400px] top-0 z-10 left-[-100%]"}>
               <AiOutlineClose size={20} className="mt-4 ml-2" onClick={toggleMenu} />
               <ul className="flex flex-col p-6 space-y-8">
-                <Link className="text-lg hover:text-red-600 font-semibold" to="/">Home</Link>
-                <Link className="text-lg hover:text-red-600 font-semibold" to="/About">About</Link>
-                <Link className="text-lg hover:text-red-600 font-semibold" to="/Message">Message</Link>
+              <Link className="text-lg hover:text-red-600 font-semibold flex items-center space-x-4" to="/"> <IoMdHome  size = {30} className = "mr-4"/> Home</Link>
+                <Link className="text-lg hover:text-red-600 font-semibold flex items-center space-x-4" to="/About"> <PiQuestionMarkFill size = {30}  className = "mr-4" /> About</Link>
+                <Link className="text-lg hover:text-red-600 font-semibold flex items-center space-x-4" to="/Message"> <FaMessage size = {30}  className = "mr-4"/> Message</Link>
+             
                 {isadmin ? (
                   <Link to="/add">
-                    <button className="bg-black text-white px-8 py-3 rounded-sm">Add New</button>
+                    <button className="hover:bg-blue-200 text-black border border-blue-400 rounded-lg px-10 py-2 font-semibold  text-lg">Add New</button>
                   </Link>
                 ) : null}
                 {user ? (
@@ -88,7 +93,7 @@ const Navbar = () => {
                   </button>
                 ) : (
                   <Link to="/login">
-                    <button className="font-semibold text-black text-lg">Login</button>
+                    <button className="hover:bg-blue-200 text-black border border-blue-400 rounded-lg px-10 py-2 font-semibold  text-lg">Login</button>
                   </Link>
                 )}
               </ul>

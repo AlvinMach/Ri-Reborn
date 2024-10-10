@@ -9,9 +9,16 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`http://localhost:8000/products/${id}`);
+        const res = await fetch('/products.json'); 
+        if (!res.ok) throw new Error('Failed to fetch products');
+
         const data = await res.json();
-        setItem(data);
+       
+        const products = data.products || []; 
+
+       
+        const product = products.find(item => item.id === id); 
+        setItem(product);
       } catch (error) {
         console.log(error);
       } finally {
@@ -31,16 +38,16 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className=" max-w-[1640px] max-h-[1640px] mx-auto container px-4  md:px-6 lg:px-[100px] py-11 mt-6" >
-        <div className = "grid grid-cols-2 gap-11 ">
-            <div className = "max-h-[50px]">
-              <img src = {item.image} className = "  h-[500px] w-full object-contain  rounded-lg" />  
-            </div>
-           <div className = "py-11 mt-11 border-b-4  ml-11 flex flex-col space-y-6">
-           <h2 className = "text-5xl font-custom">{item.title}</h2>
-           
-           </div>
+    <div className="max-w-[1640px] max-h-[1640px] mx-auto container px-4 md:px-6 lg:px-[100px] py-11 mt-6">
+      <div className="grid grid-cols-2 gap-11">
+        <div className="max-h-[500px]"> 
+          <img src={item.image} alt={item.title} className="h-[400px] w-full object-contain rounded-lg" />  
         </div>
+        <div className="py-11 mt-11 border-b-4 ml-11 flex flex-col space-y-6">
+          <h2 className="text-5xl font-custom">{item.title}</h2>
+         
+        </div>
+      </div>
     </div>
   );
 };
