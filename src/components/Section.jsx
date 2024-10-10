@@ -18,7 +18,7 @@ const Section = () => {
   useEffect(() => {
     const fetchitems = async () => {
       try {
-        const res = await fetch("http://localhost:8000/products");
+        const res = await fetch("/products.json");
         const data = await res.json();
         setProducts(data);
       } catch (error) {
