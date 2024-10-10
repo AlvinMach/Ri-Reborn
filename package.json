@@ -11,7 +11,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "json-server --watch src/Product.json --port 8000"
+    "server": "json-server --watch src/products.json --port 8000"
   },
   "dependencies": {
     "appwrite": "^15.0.0",

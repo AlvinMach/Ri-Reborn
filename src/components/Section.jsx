@@ -113,9 +113,9 @@ const Section = () => {
   return (
     <>
     <section className=" max-w-[1640px] mx-auto container px-4 md:px-6 lg:px-[100px] py-4" >
-    <h1 className="text-center text-5xl  mt-8 font-extrabold">Available Products</h1>
+    <h1 className=" sm:hidden text-center text-5xl  mt-8 font-extrabold">Available Products</h1>
      
-     <h1 className = "text-5xl  font-semibold px-11 text-slate-400 space-x-8 font-custom ml-6 mt-11">Mines</h1>
+     <h1 className = "text-5xl  font-semibold  px-11 text-slate-400 space-x-8 font-custom ml-6 mt-11">Mines</h1>
      <div className="max-w-[1640px] mx-auto container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 py-8">
        {texts && texts.length > 0 ? (
          texts.map((item) => (
