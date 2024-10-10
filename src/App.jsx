@@ -16,6 +16,7 @@ import About from "./Pages/About"
 import Contact from "./Pages/Contact"
 import PrivacyPolicy from './Pages/PrivacyPolicy';
 import Terms from './Pages/Terms';
+import Item from "./Pages/Item"
 
 
 
