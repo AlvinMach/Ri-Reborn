@@ -33,7 +33,7 @@ const Login = () => {
     account.createOAuth2Session(
       "google",
       "https://ri-reborn.vercel.app/",
-      "https://ri-reborn.vercel.app/"
+      "https://ri-reborn.vercel.app/login"
     );
   };
 
