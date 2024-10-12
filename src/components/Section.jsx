@@ -145,12 +145,12 @@ const Section = () => {
           )}
         </div>
 
-        <h1 className="text-slate-700 text-center text-5xl ml-6 font-montserrat font-semibold px-11 space-x-8 font-custom mt-8">
+        <h1 className="text-slate-700 text-center text-5xl ml-6 font-montserrat font-semibold px-11 space-x-11 space-y-8 font-custom mt-8">
           Protective Wear Clothing
         </h1>
         <div className="max-w-[1640px] mx-auto container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-11 px-8 py-11">
   {products.map((item) => (
-    <div key={item.id} className="h-64 w-full">
+    <div key={item.id} className="h-64 w-full m-8">
       <Products item={item} />
     </div>
   ))}
