@@ -45,6 +45,7 @@ const ProductDetails = () => {
         </div>
         <div className="py-11 mt-11 border-b-4 ml-11 flex flex-col space-y-6">
           <h2 className="text-5xl font-custom">{item.title}</h2>
+          <p className = "font-serif">{item.description}</p>
          
         </div>
       </div>
