@@ -218,12 +218,15 @@ const AuthContextProvider = (props) => {
   return (
     <AuthContext.Provider value={contextdata}>
       {loading ? (
-        <DotLoader
+        <>
+           <DotLoader
           color={"#808080"}
           loading={loading}
           cssOverride={override}
           size={40}
         />
+       <h1> Ri Reborn</h1>
+        </>
       ) : (
         props.children
       )}

@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useContext } from "react";
 import { AuthContext } from "../utils/AuthContextProvider";
+import { account } from "../config/config";
+
 
 const AddMine = () => {
   const {
@@ -11,6 +13,14 @@ const AddMine = () => {
     upload,
     handleImageChange,
   } = useContext(AuthContext);
+
+  const getSessions = async () => {
+    const sessions = await account.getSessions();
+    console.log(sessions)
+
+  }
+
+
 
   return (
     <>

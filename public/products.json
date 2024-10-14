@@ -1,104 +1,117 @@
 {
-    "products" :[
- {
-    "id": "1",
-    "title": "Two Piece Worksuit",
-    "image": "/Navybottom.jpg",
-    "category": "Clothing"
-  },
-  {
-    "id": "2",
-    "title": "Caterpillar Safety Shoe",
-    "image": "/Wear.jpeg",
-    "category": "Clothing"
-  },
- 
-  {
-    "id": "3",
-    "title": "Worksuit Top",
-    "image": "/IMG_0062-2-min_1800x.webp",
-    "category": "Eats"
-  },
-  {
-    "id": "4",
-    "title": "Top Reflectors",
-    "image": "/WhatsApp Image 2024-10-09 at 16.50.38.jpeg",
-    "category": "Eats"
-  },
-  {
-    "id": "5",
-    "title": "Reflective-Safety-T-Shirt",
-    "image": "/Reflective-Safety-T-Shirt.png",
-    "descrption":"Spolyester fabric with 80gsm~120gsm meeting EN471 or ANSI107 standard",
+  "products": [
+    {
+      "id": "1",
+      "title": "Two-Piece Navy Worksuit",
+      "image": "/Navybottom.jpg",
+      "description": "Durable, comfortable, and perfect for tough workdays. Made to last!",
+      "category": "Clothing"
+    },
+    {
+      "id": "2",
+      "title": "Caterpillar Safety Shoes",
+      "image": "/Wear.jpeg",
+      "description": "Rugged safety shoes designed for all-day comfort and protection.",
+      "category": "Clothing"
+    },
+    {
+      "id": "3",
+      "title": "Worksite Essential Jacket",
+      "image": "/IMG_0062-2-min_1800x.webp",
+      "description": "Stay safe and stylish with this durable, protective jacket.",
       "category": "Eats"
-  },
-  {
-    "id": "6",
-    "title": " REFLECTIVE-SHIRT-NAVY ",
-    "image": "/REFLECTIVE-SHIRT-NAVY.jpg",
-    "category": "Safety Shoe"
-  },
-  {
-    "id": "7",
-    "title": " boots-kirin",
-    "image": "/boots-kirin-2.jpg",
-    "category": "Safety Shoe"
-  },
-  {
-    "id": "8",
-    "title": " RE651-BR-HAVOC-BROWN_SIDE",
-    "image":"/RE651-BR-HAVOC-BROWN_SIDE.jpg",
-    "category": "Safety Shoe"
-  },
-  {
-    "id": "9",
-    "title": "Yellow Reflective Sunhat",
-    "price": "$2",
-    "image": "/WhatsApp Image 2024-10-09 at 16.50.40 (2).jpeg",
-    "category": "Safety Shoe"
-  },
-  {
-    "id": "10",
-    "title": "Customized-Size-High-Visibility-Reflective-Safety-Clothing-Road-Work-Protection-Coverall",
-    "image": "/Customized-Size-High-Visibility-Reflective-Safety-Clothing-Road-Work-Protection-Coverall-Jacket.webp",
-    "category": "Safety Shoe"
-  },
-  {
-    "id": "11",
-    "title": "pioneer-commander-chelsea-boot-brown-1-totalguard",
-    "image": "/pioneer-commander-chelsea-boot-brown-1-totalguard_800x.png.webp",
-    "category": "Safety Shoe"
-  },
-  {
-    "id": "12",
-    "title": "Worksuit Jacket",
-    "image": "/WhatsApp Image 2024-10-09 at 16.50.44 (1).jpeg",
-    "category": "Safety Shoe"
-  },
-  {
-    "id": "13",
-    "title": "Navy Bottom Worksuit",
-    "image": "/WhatsApp Image 2024-10-09 at 16.50.44.jpeg",
-    "category": "Safety Shoe"
-  },
- 
-  {
-    "id": "14",
-    "title": "Reflective Vests with Zip & ID Pouch",
-    "image": "/177-HotPink-8.webp",
-    "category": "Safety Shoe"
-  },
-  {
-    "id": "15",
-    "title": "Conti Suit Flame-Green",
-    "image": "/IMG_0062-2-min_1800x.webp",
-    "category": "Safety Shoe"
-  },
-  {
-    "id": "16",
-    "title": "Conti Suit Flame-Black",
-    "image": "/WhatsApp Image 2024-10-09 at 16.50.50.jpeg",
-    "category": "Safety Shoe"
-  }
-]
+    },
+    {
+      "id": "4",
+      "title": "High-Visibility Reflector Vest",
+      "image": "/WhatsApp Image 2024-10-09 at 16.50.38.jpeg",
+      "description": "Bright and secure! Be seen, be safe with top-notch reflector gear.",
+      "category": "Eats"
+    },
+    {
+      "id": "5",
+      "title": "Reflective Safety T-Shirt",
+      "image": "/Reflective-Safety-T-Shirt.png",
+      "description": "Lightweight, breathable fabric for comfort with top-tier visibility.",
+      "category": "Eats"
+    },
+    {
+      "id": "6",
+      "title": "Navy Reflective Safety Shirt",
+      "image": "/REFLECTIVE-SHIRT-NAVY.jpg",
+      "description": "Premium safety shirt with reflective strips to keep you visible on the job.",
+      "category": "Safety Shoe"
+    },
+    {
+      "id": "7",
+      "title": "Kirin Work Boots",
+      "image": "/boots-kirin-2.jpg",
+      "description": "Sturdy and stylish boots for ultimate foot protection and support.",
+      "category": "Safety Shoe"
+    },
+    {
+      "id": "8",
+      "title": "Havoc Brown Safety Boots",
+      "image": "/RE651-BR-HAVOC-BROWN_SIDE.jpg",
+      "description": "Tough, reliable boots ready for heavy-duty tasks on any terrain.",
+      "category": "Safety Shoe"
+    },
+    {
+      "id": "9",
+      "title": "Yellow Reflective Sunhat",
+      "price": "$2",
+      "image": "/WhatsApp Image 2024-10-09 at 16.50.40 (2).jpeg",
+      "description": "Stay cool and visible with this bright, reflective sunhat for all outdoor tasks.",
+      "category": "Safety Shoe"
+    },
+    {
+      "id": "10",
+      "title": "High-Visibility Safety Coverall",
+      "image": "/Customized-Size-High-Visibility-Reflective-Safety-Clothing-Road-Work-Protection-Coverall-Jacket.webp",
+      "description": "Protection meets comfort with this reflective coverall, perfect for road and work safety.",
+      "category": "Safety Shoe"
+    },
+    {
+      "id": "11",
+      "title": "Pioneer Commander Chelsea Boots",
+      "image": "/pioneer-commander-chelsea-boot-brown-1-totalguard_800x.png.webp",
+      "description": "Elegant, durable, and tough enough for all your heavy-duty needs.",
+      "category": "Safety Shoe"
+    },
+    {
+      "id": "12",
+      "title": "Worksite Jacket",
+      "image": "/WhatsApp Image 2024-10-09 at 16.50.44 (1).jpeg",
+      "description": "Strong protection against the elements and rough conditions.",
+      "category": "Safety Shoe"
+    },
+    {
+      "id": "13",
+      "title": "Navy Bottom Worksuit",
+      "image": "/WhatsApp Image 2024-10-09 at 16.50.44.jpeg",
+      "description": "Reliable and comfortable, this worksuit is your go-to for any job.",
+      "category": "Safety Shoe"
+    },
+    {
+      "id": "14",
+      "title": "Reflective Vest with Zip & ID Pouch",
+      "image": "/177-HotPink-8.webp",
+      "description": "Versatile and secure with added convenience—stay visible and organized.",
+      "category": "Safety Shoe"
+    },
+    {
+      "id": "15",
+      "title": "Flame-Resistant Green Conti Suit",
+      "image": "/IMG_0062-2-min_1800x.webp",
+      "description": "Flame-resistant fabric for the highest level of protection and comfort.",
+      "category": "Safety Shoe"
+    },
+    {
+      "id": "16",
+      "title": "Flame-Resistant Black Conti Suit",
+      "image": "/WhatsApp Image 2024-10-09 at 16.50.50.jpeg",
+      "description": "Sleek, tough, and fire-resistant—ideal for high-risk environments.",
+      "category": "Safety Shoe"
+    }
+  ]
 }

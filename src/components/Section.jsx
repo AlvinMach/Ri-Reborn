@@ -6,6 +6,7 @@ import { teams, account, storage, client } from "../config/config";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import Products from "./Products";
+import Slider from "./Slider/Slider";
 
 const Section = () => {
   const { texts, getTexts, setTexts } = useContext(AuthContext);
@@ -113,6 +114,9 @@ const Section = () => {
 
   return (
     <>
+    <div className = "max-w-[1640px]">
+
+    </div>
       <section className="bg-slate-200  max-w-[1640px] mx-auto container px-4 md:px-6 lg:px-[100px] py-4">
         <h1 className="text-5xl text-center font-semibold font-montserrat px-11 text-slate-700 space-x-8 font-custom ml-6 mt-11">
           Mines

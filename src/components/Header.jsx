@@ -15,7 +15,7 @@ const Header = () => {
         <img
           id="img"
           src="/Logo.png"
-          className="w-full h-auto max-w-[300px] md:max-w-[400px] rounded-full"
+          className="w-full h-auto max-w-[300px] md:max-w-[500px] rounded-full"
         />
       </div>
     </div>
