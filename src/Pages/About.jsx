@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 const About = () => {
   return (
     <>
-    <Navbar/>
+  
      <div className = "max-w-[1640px] px-4 py-4">
         <h1 className = "text-7xl font-extrabold text-center mb-11 border-b ">About Us</h1>
        <div className = "md:flex md:flex-row flex-col md:space-x-11 items-center">
@@ -45,7 +45,7 @@ const About = () => {
          </div>
        </div>
      </div>
-     <Footer/>
+ 
     </>
   );
 };

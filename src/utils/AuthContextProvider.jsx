@@ -14,11 +14,13 @@ const AuthContextProvider = (props) => {
   const [loading, setLoading] = useState(true); // Initialize loading to true
   const navigate = useNavigate();
   const [imagelist, setImagelist] = useState();
+  const [imagelists, setImagelists] = useState();
   const [texts, setTexts] = useState([]);
   const [newbody, setNewbody] = useState("");
   const [title, setTitle] = useState("");
   const [location, setLocation] = useState("");
   const [image, setImage] = useState(null);
+  const [imageppe, setImageppe] = useState(null);
   const [messages, setMessages] = useState("");
   const [cartItems, setCartItems] = useState([]);
 
@@ -132,6 +134,10 @@ const AuthContextProvider = (props) => {
     setImage(e.target.files[0]);
   };
 
+  const handleImageChangeppe = (e) => {
+    setImageppe(e.target.files[0]);
+  };
+
   const getImage = async () => {
     const images = await storage.listFiles("66f5ac5b003a8ec046e8");
     setImagelist(images.files);
@@ -139,6 +145,15 @@ const AuthContextProvider = (props) => {
 
   useEffect(() => {
     getImage();
+  }, []);
+
+  const getImageppe = async () => {
+    const images = await storage.listFiles("67069f2d0035a86f3223");
+    setImagelists(images.files);
+  };
+
+  useEffect(() => {
+    getImageppe();
   }, []);
 
   const upload = async (e) => {
@@ -168,6 +183,37 @@ const AuthContextProvider = (props) => {
     }
   };
 
+  const uploadppe = async (e) => {
+    e.preventDefault();
+
+    try {
+      const user = await account.getSession("current");
+
+      if (user) {
+        const newImage = await storage.createFile(
+          "67069f2d0035a86f3223",
+          "unique()",
+          image
+        );
+        console.log(newImage);
+      } else {
+        await account.createAnonymousSession();
+        const newImage = await storage.createFile(
+          "67069f2d0035a86f3223",
+          "unique()",
+          image
+        );
+        console.log(newImage);
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
+  };
+
+
+
+
+
   const addToCart = (itemId) => {
     if(!cartItems[itemId]){
       setCartItems((prev) => ({...prev ,[itemId]:1}));
@@ -194,9 +240,13 @@ const AuthContextProvider = (props) => {
     setLocation,
     setTexts,
     upload,
+    uploadppe,
     handleImageChange,
+    handleImageChangeppe,
     setImagelist,
     imagelist,
+    setImagelists,
+    imagelists,
     addToCart,
     clearCart,
     setCartItems,

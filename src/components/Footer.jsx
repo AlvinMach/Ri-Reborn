@@ -9,36 +9,8 @@ const Footer = () => {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-    const fetchmines = async () => {
-      try {
-        const res = await fetch("http://localhost:8000/mines");
-        const data = await res.json();
-        setMines(data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchmines();
-  }, []);
-
-  const handleSearch = async () => {
-    if (searchQuery.trim() === "") {
-      const res = await fetch("http://localhost:8000/mines");
-      const data = await res.json();
-      setMines(data);
-    } else {
-      const res = await fetch(
-        `http://localhost:8000/mines?title_like=${searchQuery}`
-      );
-      const data = await res.json();
-      setMines(data);
-    }
-  };
-
+ 
+ 
   return (
     <>
       <footer className="max-w-[1640px] container mx-auto w-full bg-gray-200 py-10 px-6 mt-11">
@@ -49,16 +21,16 @@ const Footer = () => {
               Follow Us
             </h2>
             <ul className="flex justify-center md:justify-start space-x-4">
-              <a href="https://wa.me/777239494" blank = "">
+              <a href="">
                 <FaWhatsappSquare size={30} className="hover:scale-105 duration-200" />
               </a>
               <a href="">
                 <FaXTwitter size={30} className="hover:scale-105 duration-200" />
               </a>
-              <a href="https://www.facebook.com/share/L5TEKUjX5CYe66gv/?mibextid=LQQJ4d">
+              <a href="">
                 <FaFacebook size={30} className="hover:scale-105 duration-200" />
               </a>
-              <a href="https://www.instagram.com/reborninvestiments?igsh=MTczNDJobXEyMmFvcQ%3D%3D&utm_source=qr" target="blank">
+              <a href="https://www.instagram.com/teslamotors/" target="blank">
                 <FaSquareInstagram size={30} className="hover:scale-105 duration-200" />
               </a>
               <a href="">

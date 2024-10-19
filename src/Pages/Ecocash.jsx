@@ -13,7 +13,7 @@ const EcoCashPayment = () => {
     setMessage('');
 
     try {
-      // Replace with your EcoCash payment endpoint
+     
       const response = await axios.post('https://api.ecocash.com/transaction', {
         phoneNumber,
         amount,

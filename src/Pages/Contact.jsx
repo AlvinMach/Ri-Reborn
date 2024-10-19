@@ -12,7 +12,7 @@ const Contact = () => {
             <p><span className = "font-semibold text-lg">Contact Person:</span> Irvin Mazarire</p>
             <p><span className = "font-semibold text-lg">Address:</span> Number 3 Glasgow, Famona Bulawayo</p>
             <p><span className = "font-semibold text-lg">Contact mobile:</span> +263 775152331</p>
-            <p><span className = "font-semibold text-lg">Other contact:</span> +263 785393253/+263 77 723 9494</p>
+            <p><span className = "font-semibold text-lg">Other contact:</span> +263 785393253</p>
             <p><span className = "font-semibold text-lg">Email:</span>Izmazarire@yahoo.com </p>
         </div>
     </div>

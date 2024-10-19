@@ -1,70 +1,44 @@
-import { useEffect, useState, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { databases } from '../config/config';
-import Navbar from '../components/Navbar';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import productsData from '../products.json'; // Make sure the path is correct
 
-const SingleProductPage = () => {
-  const { itemId } = useParams();
-  const [item, setItem] = useState(null);
-  const [loading, setLoading] = useState(true);
-
+const ProductDetails = () => {
+  const { id } = useParams(); // Get the product ID from the URL
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true); // State to track loading status
+  const [error, setError] = useState(null); // State to track any errors
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const response = await databases.getDocument(
-          import.meta.env.VITE_DATABASE_ID,
-          import.meta.env.VITE_COLLECTION_ID,
-          itemId
-        );
-        setItem(response);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching product:', error);
-        setLoading(false);
+    const fetchProductDetails = () => {
+      // Find the product by ID
+      const productItem = productsData.protectiveWear.find(item => item.id === parseInt(id)); 
+      if (productItem) {
+        setProduct(productItem);
+      } else {
+        setError('Product not found'); // Set error if product not found
       }
+      setLoading(false); // Set loading to false once fetching is done
     };
 
-    fetchProduct();
-  }, [itemId]);
+    fetchProductDetails();
+  }, [id]);
 
- 
-  
+  if (loading) {
+    return <div>Loading...</div>; // Display loading state while fetching
+  }
+
+  if (error) {
+    return <div>{error}</div>; // Display error message if product not found
+  }
 
   return (
-    <>
-      <div className="min-h-screen bg-gray-100 p-4">
-        <Navbar />
-        <div className="max-w-4xl mx-auto mt-6 bg-white shadow-lg rounded-lg p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-       
-          <div className="flex flex-col">
-            <h1 className="text-2xl font-bold mb-2">{item?.title}</h1>
-            <p className="text-gray-700 mb-4">{item?.body}</p>
-            <p className="text-gray-600 mb-4">Location: {item?.Location}</p>
-          </div>
-
-    
-          <div className="flex flex-col justify-center">
-          
-              <button
-                onClick={() => addToCart(id)}
-                className="bg-blue-500 text-white py-2 rounded-lg mb-4 hover:bg-blue-600 transition duration-200"
-              >
-                Add to Cart
-              </button>
-         
-            <button
-             
-              className="bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-200"
-            >
-              Buy Now
-            </button>
-          </div>
-        </div>
-      </div>
-    </>
+    <div className="px-6">
+      <h2 className="text-2xl font-semibold mt-6 mx-auto text-center mb-8">{product.title}</h2>
+      <img src={product.image} alt={product.title} className="w-full" />
+      <p className="mt-2">{product.description}</p>
+      <p className="mt-2 text-lg font-semibold">{product.price ? `$${product.price}` : 'Price not available'}</p>
+    </div>
   );
 };
 
-export default SingleProductPage;
-
+export default ProductDetails;
