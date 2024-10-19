@@ -38,7 +38,7 @@ const Navbar = () => {
       <nav className="max-w-[1640px] mx-auto container px-4 md:px-6 lg:px-[100px] py-4 bg-white sticky top-0 z-10">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <h1 className="font-bold text-xl">Ri REBORN</h1>
+           <Link to = "/"> <h1 className="font-bold text-xl">Ri REBORN</h1></Link>
             <ul className="hidden lg:flex px-11 lg:space-x-11 items-center mb-4 mt-3">
               <Link className="text-lg hover:text-red-600 font-semibold" to="/">Home</Link>
               <Link className="text-lg hover:text-red-600 font-semibold" to="/About">About</Link>
