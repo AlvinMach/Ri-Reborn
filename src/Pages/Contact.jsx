@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 const Contact = () => {
   return (
    <>
-   <Navbar/>
+   
     <div className = "max-w-[1640px] px-8 py-2 flex justify-center ">
         <div className = "text-center flex flex-col space-y-4">
             <h1 className = "font-extrabold text-7xl  ">Contact Us</h1>
@@ -16,7 +16,7 @@ const Contact = () => {
             <p><span className = "font-semibold text-lg">Email:</span>Izmazarire@yahoo.com </p>
         </div>
     </div>
-    <Footer/>
+ 
    </>
   )
 }

@@ -18,6 +18,9 @@ import Terms from "./Pages/Terms";
 import Gemstones from "./Pages/Gemstones";
 import Mines from "./Pages/Mines";
 import Worksuits from "./Pages/Worksuits";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 
 const App = () => {
   return (

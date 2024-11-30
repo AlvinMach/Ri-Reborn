@@ -21,16 +21,16 @@ const Footer = () => {
               Follow Us
             </h2>
             <ul className="flex justify-center md:justify-start space-x-4">
-              <a href="">
+              <a href="https://wa.me/+263 77 723 9494">
                 <FaWhatsappSquare size={30} className="hover:scale-105 duration-200" />
               </a>
               <a href="">
                 <FaXTwitter size={30} className="hover:scale-105 duration-200" />
               </a>
-              <a href="">
+              <a href="https://www.facebook.com/share/L5TEKUjX5CYe66gv/?mibextid=LQQJ4d">
                 <FaFacebook size={30} className="hover:scale-105 duration-200" />
               </a>
-              <a href="https://www.instagram.com/teslamotors/" target="blank">
+              <a href=" https://www.instagram.com/reborninvestiments?igsh=MTczNDJobXEyMmFvcQ%3D%3D&utm_source=qr ">
                 <FaSquareInstagram size={30} className="hover:scale-105 duration-200" />
               </a>
               <a href="">

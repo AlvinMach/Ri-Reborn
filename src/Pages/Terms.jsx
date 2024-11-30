@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 const Terms = () => {
   return (
     <>
-      <Navbar/>
+     
        <div className = "max-w-7xl px-11 ml-11 py-8 flex flex-col space-y-6">
        <div  className = "">
           <h1 className="text-5xl font-bold  mb-4 ">
@@ -39,7 +39,7 @@ const Terms = () => {
               <p>These Terms of Service are governed by and construed in accordance with the laws of Zimbabwe, and any disputes arising from these terms shall be resolved in the courts of Zimbabwe.</p>
            </div>
        </div>
-       <Footer/>
+      
     </>
   )
 }
